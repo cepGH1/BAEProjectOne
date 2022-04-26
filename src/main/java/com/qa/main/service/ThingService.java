@@ -48,9 +48,31 @@ public class ThingService {
 		}
 	}
 	
-	//for returning all the entries on the table user
+		//for returning all the entries on the table user
 		public List<Thing> getAll(){
 			return repo.findAll();
 		}
 	
+		//to add a user to the table
+		public Thing create( Thing thing){
+			return repo.saveAndFlush(thing); //save and flush to clean the stream, everything happens immediately
+		}
+		
+		//to modify a thing in the table
+		public Thing update(Long id, Thing thing) {
+			Thing existing = repo.findById(id).get();
+			existing.setName(thing.getName());
+			existing.setDescription(thing.getDescription());
+			existing.setPriority(thing.getPriority());
+		
+			return repo.saveAndFlush(existing);
+		}
+		
+		//to delete an entry to the Thing table and return true if no longer in the database
+		public boolean delete(long id) {
+			
+			repo.deleteById(id);
+			return !repo.existsById(id);
+			
+		}
 }
