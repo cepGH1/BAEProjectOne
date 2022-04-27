@@ -48,10 +48,11 @@ function showAllThing(resAll){
 function removeThing(){
     let myFullAddress = myAddress + "/delete/" + document.getElementById("getIdForRemoval").value;
     axios.delete(myFullAddress).then(resdel => showDeletedMessage(resdel)).catch(err => alert("not possible"))
-
+    
 }
 function showDeletedMessage(resdel){
     alert(document.getElementById("getIdForRemoval").value + " has been deleted");
+    getAllThing();
 }
 
 function replace(){
@@ -67,11 +68,23 @@ function showReplace(resput){
 
 
 function create(){
+    if(!document.getElementById("createdName").value == null || !document.getElementById("createdName").value == " " ){
     let myBody = {name:document.getElementById("createdName").value, description:document.getElementById("createdDescription").value, priority: document.getElementById("createdPriority").value};
     let myFullAddress = myAddress + "/create";
-    axios.post(myFullAddress, myBody).then(rescr => showCreate(rescr)).catch(err => alert("not working yet"));
+    axios.post(myFullAddress, myBody).then(rescr => showCreate(rescr)).catch(err => alert("not working yet"));}else{
+        alert("please enter a name for this item");
+    }
+
 }
 
 function showCreate(rescr){
     alert("worked");
+    getAllThing();
+    clearTheCreateFields();
+}
+
+function clearTheCreateFields(){
+    document.getElementById("createdName").value = "";
+    document.getElementById("createdPriority").value = "";
+    document.getElementById("createdDescription").value ="";
 }
