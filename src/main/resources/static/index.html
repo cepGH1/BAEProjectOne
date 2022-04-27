@@ -10,15 +10,55 @@
 </head>
 <body>
     <header><h1>ToDoList</h1></header>
-    <div>
-        To get a thing from the list enter the id number below<br>
-        <input type="text" id="getId"><br>
-        <button class="btn btn-info btn-lg" id="getButton">get a list item</button><br>
-
-        
+    <div class="layout100Left">
+        <h2>Things that need doing</h2>
+        <div id="fullList"></div>
     </div>
-    <div id="singleThing"></div>
+    <div class="layout100Left">
+        <div class="layout20Left">
+            <div>
+                To get a thing from the list enter the id number below<br>
+                <input type="text" id="getId"><br>
+                <button class="btn btn-info btn-lg" id="getButton">get a list item</button><br>
+            </div>
+            <div id="singleThing"></div>
+        </div>
+   
+    <div class="layout20Left">
+        <div>
+            Create a new list member:<br>
+            <p>Name<br> <input type="text" id="createdName"></p>
+            <p>Description<textarea id="createdDescription"></textarea></p>
+            <p>Priority<br><input type="text" id="createdPriority"></p>
+            <button class="btn btn-info btn-lg" id="createButton">Create List Item</button> 
 
+
+             
+        </div>
+    </div>
+    <div class="layout20Left">
+        <div>
+            Edit a list member:<br>
+            <p>Id Number<br>
+            <input type="text"  id="editedId"> 
+            <button class="btn btn-info btn-sm" id="fetchButton">load Item</button>  </p>
+            <p>Name<br> <input type="text" id="editedName"></p>
+            <p>Description<textarea id="editedDescription"></textarea></p>
+            <p>Priority<br><input type="text" id="editedPriority"></p>
+            <button class="btn btn-info btn-lg" id="editedButton">Edit List Item</button> 
+
+
+             
+        </div>
+    </div>
+    <div class="layout20Left">
+        <div>
+            To delete a thing from the list enter the id number below<br>
+            <input type="text" id="getIdForRemoval"><br>
+            <button class="btn btn-info btn-lg" id="removeButton">delete</button> 
+        </div>
+    </div>
+    </div>
     
 </body>
 <script src="./javascript/main.js"></script>
