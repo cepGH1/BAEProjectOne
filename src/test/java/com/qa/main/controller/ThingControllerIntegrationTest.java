@@ -3,6 +3,7 @@ package com.qa.main.controller;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -21,6 +22,7 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.qa.main.domain.Thing;
+
 
 
 
@@ -69,13 +71,22 @@ public class ThingControllerIntegrationTest {
 	}
 	
 	//make sure that an entry in the test schema can be modified
-	
+	@Test
+	public void updateTest() throws Exception{
+		Thing replacementThing = new Thing(1L, "bob", "green army", "high");
+		String replacementThingAsJSON = mapper.writeValueAsString(replacementThing);
+		
+		this.mvc.perform(put("/Thing/update/1").contentType(MediaType.APPLICATION_JSON).content(replacementThingAsJSON));
+		
+	}
 	
 	//make sure that an entry can be deleted from test schema
 	@Test
 	public void deleteTest() throws Exception {
 		mvc.perform(delete("/Thing/delete/1").contentType(MediaType.APPLICATION_JSON)).andExpect(status().isNoContent());
 	}
+	//check that failed delete gives expected internal server error response
 	
-	//
+
+	
 }
