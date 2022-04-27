@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDoList</title>
+    <link rel="stylesheet" type="text/css" href="./css/style.css" >
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    <header><h1>ToDoList</h1></header>
+    <div class="layout100Left">
+        <h2>Things that need doing</h2>
+        <div id="fullList"></div>
+    </div>
+    <div class="layout100LeftWhite">
+        <div class="layout20Left">
+            <div>
+                To get a thing from the list<br>
+                <p>Item Number<br>
+                    <input type="text" id="getId"></p>
+                <p><button class="btn btn-info btn-lg" id="getButton">get a list item</button></p>
+            </div>
+            <div id="singleThing"></div>
+        </div>
+   
+    <div class="layout20Left">
+        <div>
+            Create a new list member:<br>
+            <p>Name<br> <input type="text" id="createdName"></p>
+            <p>Description<textarea id="createdDescription"></textarea></p>
+            <p>Priority<br><input type="text" id="createdPriority"></p>
+            <button class="btn btn-info btn-lg" id="createButton">Create List Item</button> 
+
+
+             
+        </div>
+    </div>
+    <div class="layout20Left">
+        <div>
+            Edit a list member:<br>
+            <p>Item Number<br>
+            <input type="text"  id="editedId"> 
+            <button class="btn btn-info btn-sm" id="fetchButton">load Item</button>  </p>
+            <p>Name<br> <input type="text" id="editedName"></p>
+            <p>Description<textarea id="editedDescription"></textarea></p>
+            <p>Priority<br><input type="text" id="editedPriority"></p>
+            <button class="btn btn-info btn-lg" id="editedButton">Edit List Item</button> 
+
+
+             
+        </div>
+    </div>
+    <div class="layout20Left">
+        <div>
+            <p>To delete a thing from the list enter the item number<br>
+            <input type="text" id="getIdForRemoval"></p>
+            <button class="btn btn-danger btn-lg" id="removeButton">Delete Item</button> 
+        </div>
+    </div>
+    </div>
+    
+</body>
+<script src="./javascript/main.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
+</html>
