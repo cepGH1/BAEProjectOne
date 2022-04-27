@@ -17,13 +17,13 @@ alert("event listener working");
 
 function getThingById(){
   let myFullAddress = myAddress + "/getById/" + document.getElementById("getId").value;
-   axios.get(myFullAddress).then(res => showThing(res)).catch(err => alert("not working yet"));
+   axios.get(myFullAddress).then(res => showThing(res)).catch(err => alert("Couldn't find that item number"));
 
 
 }
 
 function showThing(res){
-    document.getElementById("singleThing").innerText = `name = ${res.data.name}, description =  ${res.data.description}, priority = ${res.data.priority}`;
+    document.getElementById("singleThing").innerText = `name = ${res.data.name} \n description =  ${res.data.description} \n priority = ${res.data.priority}`;
 }
 
 function fetchThing(){
@@ -41,7 +41,17 @@ function getAllThing(){
     axios.get(myAddress + "/getAll").then(resAll => showAllThing(resAll)).catch(err => alert("request failed"));
 }
 function showAllThing(resAll){
-    document.getElementById("fullList").innerText = JSON.stringify(resAll.data);
+    // document.getElementById("fullList").innerText = JSON.stringify(resAll.data);
+     let contents = document.getElementById("fullList");
+    let listDisplay = "<div>";
+    for(let i = 0; i<resAll.data.length; i++){
+        listDisplay += resAll.data[i].id + ";  " + resAll.data[i].name + " ;  " +  resAll.data[i].description + " ; PRIORITY " + resAll.data[i].priority + "<br>";
+    }
+    listDisplay += "</div>"
+   
+    //document.getElementById("fullList").append( listDisplay);
+   // contents.insertAdjacentHTML("afterend",listDisplay);
+   document.getElementById("fullList").innerHTML = listDisplay;
 
 }
 
@@ -63,15 +73,18 @@ function replace(){
 
 function showReplace(resput){
     alert("worked");
+    document.getElementById("fullList");
+    getAllThing();
 
 }
 
 
 function create(){
     if(!document.getElementById("createdName").value == null || !document.getElementById("createdName").value == " " ){
-    let myBody = {name:document.getElementById("createdName").value, description:document.getElementById("createdDescription").value, priority: document.getElementById("createdPriority").value};
-    let myFullAddress = myAddress + "/create";
-    axios.post(myFullAddress, myBody).then(rescr => showCreate(rescr)).catch(err => alert("not working yet"));}else{
+        let myBody = {name:document.getElementById("createdName").value, description:document.getElementById("createdDescription").value, priority: document.getElementById("createdPriority").value};
+        let myFullAddress = myAddress + "/create";
+
+        axios.post(myFullAddress, myBody).then(rescr => showCreate(rescr)).catch(err => alert("not working yet"));}else{
         alert("please enter a name for this item");
     }
 
