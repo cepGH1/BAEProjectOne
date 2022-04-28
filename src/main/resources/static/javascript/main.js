@@ -50,7 +50,7 @@ function showAllThing(resAll){
     listDisplay += "</div>"
    
     //document.getElementById("fullList").append( listDisplay);
-   // contents.insertAdjacentHTML("afterend",listDisplay);
+   
    document.getElementById("fullList").innerHTML = listDisplay;
 
 }
@@ -72,7 +72,7 @@ function replace(){
 }
 
 function showReplace(resput){
-    alert("worked");
+   // alert("worked");
     document.getElementById("fullList");
     getAllThing();
 
@@ -91,7 +91,7 @@ function create(){
 }
 
 function showCreate(rescr){
-    alert("worked");
+   // alert("worked");
     getAllThing();
     clearTheCreateFields();
 }
