@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,12 +28,12 @@ public class ThingServiceUnitTest {
 		
 		@Test
 		public void constructorTest() {
-			assert(service instanceof ThingService);
+			assertTrue(service instanceof ThingService);
 		}
 		
 		@Test
 		public void setRepoTest() {
-			assert(service.getRepo().equals(repo));
+			assertEquals(service.getRepo(), repo);
 		}
 		
 		@Test
@@ -42,7 +43,7 @@ public class ThingServiceUnitTest {
 			
 			Mockito.when(this.repo.findAll()).thenReturn(output);
 			
-			assert(output == this.service.getAll());
+			assertEquals(output, this.service.getAll());
 			
 			Mockito.verify(this.repo, Mockito.times(1)).findAll();
 		}
@@ -54,7 +55,7 @@ public class ThingServiceUnitTest {
 			
 			Mockito.when(this.repo.findById(1L)).thenReturn(OptionalOutput);
 			
-			assert(output.equals( this.service.getById(1L)));
+			assertEquals(output, this.service.getById(1L));
 			
 			Mockito.verify(this.repo, Mockito.times(1)).findById(1L);
 		}
@@ -66,7 +67,7 @@ public class ThingServiceUnitTest {
 			
 			Mockito.when(this.repo.saveAndFlush(input)).thenReturn(output);
 			
-			assert(output == this.service.create(input));
+			assertEquals(output, this.service.create(input));
 			
 			Mockito.verify(this.repo, Mockito.times(1)).saveAndFlush(input);
 		}
@@ -80,7 +81,7 @@ public class ThingServiceUnitTest {
 			Mockito.when(this.repo.findById(1L)).thenReturn(existing);
 			Mockito.when(this.repo.saveAndFlush(output)).thenReturn(output);
 			
-			assert(output == this.service.update(1L, input));
+			assertEquals(output, this.service.update(1L, input));
 			
 			Mockito.verify(this.repo, Mockito.times(1)).findById(1L);
 			Mockito.verify(this.repo, Mockito.times(1)).saveAndFlush(output);
@@ -90,7 +91,7 @@ public class ThingServiceUnitTest {
 		public void deleteTest() {
 			Mockito.when(this.repo.existsById(1L)).thenReturn(false);
 			
-			assert(this.service.delete(1L) == true);
+			assertTrue(this.service.delete(1L));
 			
 			Mockito.verify(this.repo, Mockito.times(1)).deleteById(1L);
 			Mockito.verify(this.repo, Mockito.times(1)).existsById(1L);
