@@ -1,0 +1,23 @@
+
+.layout100Left{
+    background-color: blanchedalmond;
+    width:100vw;
+    padding: 5px;
+    margin: 5px;
+}
+
+
+
+.layout20Left{
+    background-color: aliceblue;
+    width:20vw;
+    float:left;
+    border-radius: 3px;
+    border-style: solid;
+    padding: 5px;
+    margin: 2px;
+}
+
+.layout100LeftWhite{
+    background-color: white;
+}
