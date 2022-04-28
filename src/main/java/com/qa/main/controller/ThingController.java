@@ -59,7 +59,7 @@ public class ThingController {
 		//modify an entry in the table
 		@PutMapping("/update/{id}")
 		public ResponseEntity<Thing> update(@PathVariable long id, @RequestBody Thing thing ){
-			return new ResponseEntity<Thing>(service.update(id, thing), HttpStatus.CREATED);
+			return new ResponseEntity<Thing>(service.update(id, thing), HttpStatus.ACCEPTED);
 		}
 		
 		//delete an entry in the table
