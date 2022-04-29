@@ -19,6 +19,7 @@ localhost:3306/todolist<br>
 spring.profiles.active=test<br>
 will run this API with a non-persistant H2 database</p>
 <p>The web page allows a user to create, update, read and delete from a list of 'things to do'. The list of items (things to do) can be held temporarily in the test H2 database which will be wiped clean when the app is stopped or the list can be held in a mySQL schema called todolist that provides a persistance layer.<br>
+  The web page is a dashboard style page, that lists the todo list at the top and provides a clearly defined area for each of the tasks that need doing to the list.
   </p>
  <img src= "https://user-images.githubusercontent.com/12085003/165972436-6e4cb5e1-f321-4dd4-8453-d4943677e43d.png", height="300px" alt="missin image">
 
