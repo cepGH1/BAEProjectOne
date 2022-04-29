@@ -38,21 +38,20 @@ function showEditThing(edRes){
 }
 
 function getAllThing(){
-    axios.get(myAddress + "/getAll").then(resAll => showAllThing(resAll)).catch(err => alert("request failed"));
+    axios.get(myAddress + "/getAll").then(resAll => showAllObjects(resAll)).catch(err => alert("request failed"));
 }
-function showAllThing(resAll){
-    // document.getElementById("fullList").innerText = JSON.stringify(resAll.data);
-     let contents = document.getElementById("fullList");
-    let listDisplay = "<div>";
-    for(let i = 0; i<resAll.data.length; i++){
-        listDisplay += resAll.data[i].id + ";  " + resAll.data[i].name + " ;  " +  resAll.data[i].description + " ; PRIORITY " + resAll.data[i].priority + "<br>";
-    }
-    listDisplay += "</div>"
-   
-    //document.getElementById("fullList").append( listDisplay);
-   // contents.insertAdjacentHTML("afterend",listDisplay);
-   document.getElementById("fullList").innerHTML = listDisplay;
 
+function showAllObjects(resAll){
+    document.getElementById("fullList").innerText = "";
+    let dataArray = resAll.data;
+    for(let i = 0; i < resAll.data.length; i++){
+        
+        let trash = ` ${dataArray[i].id} :  ${dataArray[i].name} :  ${dataArray[i].description} : PRIORITY ${dataArray[i].priority}` 
+        let node = document.createElement("div");
+        let textnode = document.createTextNode(trash);
+        node.appendChild(textnode);
+        document.getElementById("fullList").appendChild(node);
+    }
 }
 
 function removeThing(){
@@ -72,7 +71,7 @@ function replace(){
 }
 
 function showReplace(resput){
-    alert("worked");
+   // alert("worked");
     document.getElementById("fullList");
     getAllThing();
 
@@ -91,7 +90,7 @@ function create(){
 }
 
 function showCreate(rescr){
-    alert("worked");
+   // alert("worked");
     getAllThing();
     clearTheCreateFields();
 }
