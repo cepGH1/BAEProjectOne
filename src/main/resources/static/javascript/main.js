@@ -46,7 +46,7 @@ function showAllObjects(resAll){
     let dataArray = resAll.data;
     for(let i = 0; i < resAll.data.length; i++){
         
-        let trash = `item number; ${dataArray[i].id} name; ${dataArray[i].name} description; ${dataArray[i].description} priority ${dataArray[i].priority}` 
+        let trash = ` ${dataArray[i].id} :  ${dataArray[i].name} :  ${dataArray[i].description} : PRIORITY ${dataArray[i].priority}` 
         let node = document.createElement("div");
         let textnode = document.createTextNode(trash);
         node.appendChild(textnode);
